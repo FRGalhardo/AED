@@ -13,3 +13,5 @@ void insertionSort(int* v, int tam);
 void merge(int* v, int ini, int meio, int fim);
 
 void mergeSort(int* v, int ini, int fim);
+
+void quickSort(int* v, int ini, int fim);

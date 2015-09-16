@@ -19,11 +19,11 @@ int main()
 	//bubbleSort(v, qNum);
 	//selectionSort(v, qNum);
 	//insertionSort(v, qNum);
-	mergeSort(v, 0, qNum - 1);
+	//mergeSort(v, 0, qNum - 1);
+	quickSort(v,0 , qNum - 1);
 	for(i = 0; i < qNum; i++)
 	{	
 		printf("%d ",*(v + i));
 	}
 	printf("\n");
-	return 0;
 }

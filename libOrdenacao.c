@@ -140,3 +140,47 @@ void mergeSort(int* v, int ini, int fim)
 		merge(v, ini, meio, fim);
 	}
 }
+
+void quickSort(int* v, int ini, int fim)
+{
+	int pivot, bMa, bMe, a;
+
+	pivot = ini; 
+	bMa = ini+1;
+	bMe = fim;
+
+	//printf(">>>%d %d\n", ini, fim);
+
+	if(ini >= fim)
+	{
+		return;
+	}
+
+	while(bMa < bMe)
+	{
+		//printf("====%d %d\n", bMe, bMa);
+		while((*(v + bMa) < *(v + pivot)) && (bMa <= bMe))
+		{
+			bMa++;
+		}
+
+		while((*(v + bMe) > *(v + pivot)) && (bMa <= bMe))
+		{
+			bMe--;
+		}
+
+		if(bMa < bMe){
+			troca(v, (v + bMa), (v + bMe));
+			bMa++;
+			bMe--;
+		}
+	
+	}
+	if(bMe - 1 > 0)
+		a = bMe - 1;
+	else
+		a = 0;
+	troca(v, (v + bMe), (v + pivot));
+	quickSort(v, ini, a); // (((bMe - 1) > 0)?(bMe - 1):0));
+	quickSort(v, bMe + 1, fim);
+}
