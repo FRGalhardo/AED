@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include "libOrdenacao.h"
 
 int* alocarVetor(int tam)
@@ -16,9 +16,10 @@ int main()
 	{	
 		scanf("%d",v + i);
 	}
-	bubbleSort(v, qNum);
+	//bubbleSort(v, qNum);
 	//selectionSort(v, qNum);
 	//insertionSort(v, qNum);
+	mergeSort(v, 0, qNum - 1);
 	for(i = 0; i < qNum; i++)
 	{	
 		printf("%d ",*(v + i));

@@ -1,5 +1,5 @@
 #include "libOrdenacao.h"
-#include <stdio.h>
+#include <stdio.h>	
 
 void troca(int* v, int* p1, int* p2)
 {
@@ -73,5 +73,70 @@ void insertionSort(int* v, int tam)
 		}
 		arrastaVetor(v, w + 1, aInserir);
 		aInserir++;
+	}
+}
+
+void merge(int* v, int ini, int meio, int fim)
+{
+	int* rascunho = (int*) malloc((fim - ini + 1) * sizeof(int));
+	if(rascunho == NULL)
+	{
+		printf("FAIL!");
+		return;
+	}
+	int i, dir, esq, x;
+	dir = meio + 1;
+	esq = ini;
+	i = 0;
+	while((esq <= meio) && (dir <= fim))
+	{
+		if(*(v + esq) < *(v + dir))
+		{
+			*(rascunho + i) = *(v + esq);
+			esq++;
+		}
+		else
+		{
+			*(rascunho + i) = *(v + dir);
+			dir++;
+		}
+		i++;
+	}
+	if(esq > meio)
+	{
+		while(dir <= fim)
+		{
+			*(rascunho + i) = *(v + dir);
+			dir++;
+			i++;
+		}
+	}
+	else
+	{
+		while(esq <= meio)
+		{
+			*(rascunho + i) = *(v + esq);
+			esq++;
+			i++;
+		}
+	}
+	for(i = ini, x = 0; i <= fim; i++, x++)
+	{
+		*(v + i) = *(rascunho + x);
+	}
+
+	free(rascunho);
+}
+
+void mergeSort(int* v, int ini, int fim)
+{
+	int i;
+	if((fim - ini) >= 1)
+	{
+		int meio; 	
+		meio = ((ini + fim) / 2);
+		mergeSort(v, ini, meio);
+		mergeSort(v, meio + 1, fim);
+		merge(v, ini, meio, fim);
 	}
 }
